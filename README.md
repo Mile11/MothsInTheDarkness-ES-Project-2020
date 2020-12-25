@@ -1,4 +1,6 @@
-<div style="text-align:center"><img src="https://github.com/Mile11/MothsInTheDarkness-ES-Project-2020/blob/master/logo.png?raw=true" /></div>
+<p align="center">
+  <img src="https://github.com/Mile11/MothsInTheDarkness-ES-Project-2020/blob/master/logo.png?raw=true" alt="Sublime's custom image"/>
+</p>
 
 ## Overview
 
