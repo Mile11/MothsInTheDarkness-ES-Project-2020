@@ -1,0 +1,552 @@
+{
+  "setup": {
+    "title": "title.txt",
+    "opening": [
+      "Somewhere between the anxiety currently overwhelming your body and the shore of your memories is the key that makes the madness make sense. You are not a murderer yet, but your future seems all but certain. Is this merely a memory, being replayed? Is it done? It doesn't feel done. And whatever conscience that still remains within you is promising -- screaming -- that it will never FEEL done. Years or decades.\n\nThe whole business feels like relief and damnation alike. Relief, because you'll get even, with enough morality in you to scream and kick as you do it. The damnation being that you'll still actually do it.\n\nYou blink, pulling yourself from your thoughts. Without even realizing it, you've found yourself at the entrance of Robert Bedlam's mansion. You slow the car to a halt."
+    ],
+    "opening2": [
+      "You check your watch. The time is 8 PM. Right on the dot.",
+      "Making your way through the heavy rain, you reach the massive double doors at the entrance of the mansion, pushing it open without bothering to ring the bell."
+    ],
+    "final_remarks": [
+      "You check your watch. Robert would never allow guests to stay at his place beyond 11. By 10:30, they'll likely start packing up. That gives you just around two and a half hours to do... what you have to do."
+    ],
+    "instructions": [
+      "You are now free to explore the mansion and make your move. Every moment costs you a minute. Looking around costs nothing. You can 'think' to try and figure out where your victim is at all times. The goal is to commit the murder before 22:30, and make it so that police can't pinpoint you as the culprit.\n\nThe police will always correctly estimate the time of death. Use that fact and the secrets of this mansion to try and give yourself an alibi. Assume it always takes a minute for traveling between rooms in general. Don't forget about fingerprints, either. And keep in mind you're likely to be searched when the police arrive...\n\nFor further instructions, use the 'help' command."
+    ]
+  },
+  "victims": [
+    {
+      "id": "robert",
+      "name": "Robert",
+      "opening_section": [
+        "You and Robert have always had your differences. Even when you knew each other back in your college days, one of you had joked it would end with one murdering the other. Now, you're a patient person. You've forgiven a lot of things.\n\nBut getting past this was impossible. He stole the only existing English translation of Hideo Nakai's 1984 masterpiece 'Offerings to Nothing.' It was a parting gift from your deceased mother -- one you hadn't even known existed until last week.\n\nThe novel itself is considered one of the three Japanese 'Occult' murder mysteries. No official translation exists; your mother must've made it herself and prepared it for you as a surprise. You are a fan of mystery novels, after all.",
+        "Still, what the novel actually is is, frankly, beside the point. What matters -- what hurts -- is that Robert had stolen it from you before you had a chance to read it, and burned it as some payback for an argument you'd had a few days prior.",
+        "It was unforgivable. It still is.\n\nAnd enough is enough.",
+        "He's invited you to this dinner party, in his newly-refurbished mansion, to 'patch things up.' But there will be no patching. Only tearing. Through his flesh, through his mind, it doesn't matter.\n\nHe dies tonight.",
+        "You go over the list of other guests in your mind. These are the people who will make or break your plan -- whatever your plan actually is. Consider them carefully."
+      ],
+      "opening_section2": [
+        "Robert is always at the entrance, smiling from ear to ear. Likely at the sight of seeing you wet as a dog.\n\n'You've made it!' he cries. 'I was getting a bit worried you got stuck in a mudslide or something. Terrible things, those.'",
+        "He lights a cigarette. 'Well, anyhow, this is a pretty relaxed affair. Feel free to go wherever you want. The others are all here somewhere. Try and mingle, eh? I know socializing isn't your strong suit, but you gotta liven up, man.'",
+        "You say something, without much commitment to the words. This place is large. And knowing Robert, it's got its fair share of secrets. Just how are you going to pull this off? With people running around everywhere, getting a moment with the two of you alone is going to be tricky. Not to mention, at the very moment of the act, there's always a danger of someone walking in...",
+        "You blink. Cross that bridge when you get to it.\n\n'Oh.' Robert clears his throat. 'And sorry about that manuscript, alright? I wasn't thinking. I'll pay someone to translate it again, okay?'\n\nWith that half-hearted declaration, he strolls off, leaving you alone."
+      ],
+      "description": "The old man has seen better days. And soon, he won't see any days at all.\nIt's a shame it's come to this. But he'd crossed a line. It's not just about the stupid book. It's about the intent. It's about the arrogance.\nYou can't forgive that. You just can't.",
+      "talks": {
+        "I'm gonna kill you tonight. Hard.": "He laughs. 'Always the joker, aren't you?'",
+        "Did you at least read the translation before burning it?": "He shakes his head. 'You know I don't read mystery novels. Especially pretentious ones.'\nPretentious?! Unforgivable. Absolutely no respect."
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "duke",
+      "name": "Duke",
+      "intro": "a disgraced detective seeking redemption at the bottom of a bottle",
+      "description": "A man in his mid-40s. The craters under his eyes and the stench of whiskey tell stories far more damning than the ones of criminals he caught back in his prime.\nIf there ever was such a thing as a prime for him.\nTo his credit, he is trying. Failing, but the attempt is noticeable and should be given some amount of credit.",
+      "talks": {
+        "Your detective sense tell you anything?": "'There's something odd in the bedroom. Can't put my finger on what, though. But my instincts are telling me something's up.'",
+        "How're you holding up? You look a bit tired.": "He swirls around a glass of brandy in his hand, desperately trying to resist the temptation. He doesn't even notice your question."
+      }
+    },
+    {
+      "id": "angel",
+      "name": "Angel",
+      "intro": "a man claiming to live between thirteen parallel worlds",
+      "description": "The image of the man on the TV and the image of the man standing in front of you seems misaligned somehow.\nThere is some amount of truth to his title -- 'The Man Who Lives Between Parallel Worlds.'\nBoth worlds are, however, here - on planet Earth: the world on the stage, and a quiet world, which seems to exist in moments like these.\nTo be seen only by him. And, in this instance, by you.",
+      "talks": {
+        "Tell me one of your great exploits in one of the parallel worlds.": "'In one world, I was a pirate. Blackbeard had survived all the way to 2020, having discovered an old but technologically advanced pacemaker. Likely left by an ancient civilization that predated the people of that world.'",
+        "Is there an alternate version of some somewhere out there?": "He brings his hand up to his chin. 'I knew you in one world. I think. You were a computer science major.' He sniffs. 'You were caught up in some project. A text adventure for a... what was it? Expert Systems course? It didn't work very well when I tried it out.'"
+      }
+    },
+    {
+      "id": "houseman",
+      "name": "Mr. House",
+      "intro": "a casino owner always getting cleaned out at the blackjack table, even when he stops even the cleverest ones from counting cards",
+      "description": "The lengths at which Mr. House goes to in order to stop the people he sees 'defiling' his casino are tremendous.\nThe card-counters are his biggest enemies. He claims to have found a way to catch them; 'absolutely foolproof', he's always claimed.\nBut can you really stop the human mind from turning its gears?\nAs he tugs on his mustache, you imagine he's thinking about it. He always is. Every second is a gamble.\nEvery night at the casino a chance for someone to go bust. Will it be him or card-counters?\nThe gears turn...",
+      "talks": {
+        "Enjoying the party?": "'I'm not much of a party man. Nor am I huge fan of the way this one's been organized. But the planetarium is nice enough, I suppose. Calming. I need calming.'",
+        "I was at your casino once. One of them, anyway.": "'Ah. Isn't that something? I hope to see you again soon.' He can probably tell you're not much of a gambler."
+      }
+    },
+    {
+      "id": "benny",
+      "name": "Benny",
+      "intro": "a hustler; never made it big, but never got swept up in the tide",
+      "description": "Benny's well-known for the work he's done in cleaning one of Mr. House's casino down at Blackford. The beating was so tremendous it got shut down.\nBenny's always said it was a loss for him as much as it was for House. But the fact was -- one had the other's millions in his bank account.\nIt was not the same.\nIt's been a while since he's shown his face since then, and you can tell he's decided to go for his best: a pristine white and gray checkered suit.\nBrings out his clever gray eyes.",
+      "talks": {
+        "Any tips for an aspiring young gambler?": "He chuckles. 'Yeah, man. Stay outta my way. And keep your luck to yourself, eh?'",
+        "Ever heard of the Platinum Chip?": "He grins. 'C'mon, baby. Benny doesn't appreciate random Fallout New Vegas references.'"
+      }
+    },
+    {
+      "id": "rutherford",
+      "name": "Rutherford",
+      "intro": "a recluse physicist in search of the pathway to God, hidden among the atoms",
+      "description": "You can never quite remember. What his historical namesake a physicist or chemist...? Even if it's the former, the similarities likely end at the name.\nHe smells. Likely hasn't bathed in a week. And that's only if you're lucky.",
+      "talks": {
+        "Hello.": "'A hello loops so easily into a goodbye, don't you think?'",
+        "Seen anything interesting?": "'Many books in the library. All fiction. All garbage.'",
+        "Heard you were trying to find God in the atoms or something like that. Any luck?": "He shrugs. 'When I find God, you'll know it. We all will. He is here, we just can't see him. He may very well be in you.' He sniffs. 'Not in a Christian way. You may very well be God, and we may very well exist right now for your sake. Who is to say?'"
+      }
+    },
+    {
+      "id": "markham",
+      "name": "Markham",
+      "intro": "the district attorney with too much sympathies for the people he chases",
+      "description": "This man looks like he's about to burst at the seems. Or rather, maybe the room attempting to hold him is. You can't tell. That's just how off-guard his sheer size has managed to catch you.\nPerhaps that's partially why he's as successful as he is at his job. Once he makes eye contact with his prey, they probably just fold right then and there.\nYou wish you'd brought your sunglasses.",
+      "talks": {
+        "Enjoying the party?": "He nods.\n...And leaves it at that.",
+        "Anything catch the district attorney's eye?": "'Hrm.' He sighs. 'Something's up with in the servant's room. I'm sure of it. Can't see it, though. Maybe I've just had a long day.'"
+      }
+    },
+    {
+      "id": "elliot",
+      "name": "Elliot",
+      "intro": "a writer of surreal stories that he claims are true",
+      "description": "As crazy as he is trying to make himself look to the press, it's not difficult to see that the brain hiding in Elliot Dunkmann's skull is of decent-size. The whole 'eccentric artist' shtick has definitely paid off.\nA writer who writes flat-out surrealist fiction, claiming them as his own memories. It's ao stupid. But it sells. Oh, man does it sell.",
+      "talks": {
+        "Tell me a story, writer-man.": "'There once was a man who woke up one day and saw a massive hole in his ceiling. It followed him through his day, but never touched him. Nobody could see the hole. Or the creature beyond. The next morning, it was gone. The week after, his whole house went up in flames. His body was never found.'",
+        "What do you think about our host?": "'Not too happy about being left to fend for myself, but I don't really have a problem with anyone. Do you?'"
+      }
+    },
+    {
+      "id": "anna",
+      "name": "Anna",
+      "intro": "a dancer who many suspect is the leader of an underground cult",
+      "description": "'The Order  of the Midnight Sun.' The name flashes through your mind the moment you lay your eyes on her. She doesn't look like a cult leader. But the actually good ones aren't supposed to.\nShe smiles. You smile back. Not much of a talker, this one. Being a dancer, she's probably more used to expressing herself through her body, rather than plain speech.\nIs her dance, then, enough to make a believer?",
+      "talks": {
+        "Can I join your cult?": "She sighs. 'Don't believe everything you hear. Even if I'm sure you've heard many things. The Order, while real, isn't mine to lead. Nor am I going to act as a recruiter.'",
+        "What do you believe in?": "'I believe in nothing but the Midnight Sun.' she says simply.",
+        "Will you dance for me?": "'Now, now. I'm not your puppet, am I?'"
+      }
+    },
+    {
+      "id": "dinah",
+      "name": "Dinah",
+      "intro": "a former maid who moved up circles upon circles after her employer left her everything",
+      "description": "You don't wish to judge, but there is a certain air of arrogance to her. The rags to riches story sells movie tickets and tabloids alike -- although real-life Cinderellas rarely have a good time in the real world.\nSome say she had an affair with old Lord Raventhorpe. Others that the old man had simply gone senile.\nMost agree she was probably the one to do him in.",
+      "talks": {
+        "I had a question about your late husband.": "'I don't want to talk to you.'",
+        "Enjoying the party?": "'Leave me alone.'",
+        "Seen anything interesting?": "'Buzz off.'"
+      }
+    },
+    {
+      "id": "elena",
+      "name": "Elena",
+      "intro": "the woman believed to have died at least three times, only to inexplicably come back to life",
+      "description": "She looks pretty good, for a self-proclaimed zombie.\nHow is it that her story goes? She died once as a child. Another time while working at a postal office. The third time during childbirth. And each time, she'd come back to life, having made a deal with a being that lies beyond.\nNobody's been able to outright deny her claims. But that's the thing with ouotlandish lies, isn't it? Them not being on-land makes finding any evidence on-land rather difficult, doesn't it?",
+      "talks": {
+        "Enjoying the party?": "She chuckles. She's clearly a bit tipsy. 'More than others, but definitely less than I would at another places. Unfortunate, ain't it?'",
+        "Tell me about your first death.": "'I was walking my dog when a government missile landed on top of me. It was a failed test, y'see. They apparently took me to the morgue in pieces. But the next thing I know, I was lying on my bed -- my parents and authorities equally shocked. Officially, it was a case of misidentified remains. But I obviously experienced it.'",
+        "Tell me about your second death.": "'I was asked to fetch a letter for a customer. As I did, it turned out the whole envelope had been covered in cyanide. A few minutes was all it took for me to die. They later said it had been part of a terrorist scheme. Dumb of terrorists to think the middleman wouldn't have ended up dying. But so it goes, right?'",
+        "Tell me about your third death.": "'I gave birth to my child. I died. The child lived. I came back. The child died in my stead. That's all there is to it.'"
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "id": "entrance",
+      "name": "Entrance Hall",
+      "description": "You stare at your own shadow. It's sharp, in spite of how dim the overall room is. Put your hand in front of your face, and there's a good chance you might lose sight of it. The shadow's the only thing that'll keep you grounded. As the house creaks, you feels as if the few bits of light move as well, ever so slightly. Perhaps the ground intends to open and swallow everything whole?",
+      "items": [
+        {
+          "id": "coat",
+          "name": "Dusty Coat",
+          "description": "An old coat. Its pockets are empty.",
+          "description_in_start_room": "A solitary dusty coat rests on its little rack in the corner of the room.",
+          "description_outside_start_room": "A dusty coat lies carelessly tossed in the corner of the room.",
+          "aliases": [
+            "coat",
+            "dusty coat",
+            "old coat"
+          ],
+          "type": [
+            "carryable",
+            "cover"
+          ]
+        },
+        {
+          "id": "chandelier",
+          "name": "Chandelier",
+          "description": "The chandelier sways ever so gently. It reminds you of the overhead lamps on ships, moving back and forth with the waves...",
+          "description_in_start_room": "A faint clink makes you look up. A chandelier dangles over your head. It's electric, yet most of its bulbs have died. That's not even mentioning the ones that had likely cracked long ago.",
+          "aliases": [
+            "chandelier",
+            "light"
+          ],
+          "type": []
+        }
+      ],
+      "exits": {
+        "north": "main_hall",
+        "east": "lounge"
+      }
+    },
+    {
+      "id": "main_hall",
+      "name": "Main Hall",
+      "description": "Your feet practically sink into the carpet covering the entirety of the main hall's massive floor. So massive the room is, in fact, that in its mass it forgot to have substance. It's so empty that you can hear the faint whistle of the draft coming from somewhere. Let your thoughts wonder too far, and you'll swear you're seeing ghosts.",
+      "items": [],
+      "exits": {
+        "south": "entrance",
+        "east": "game_room",
+        "west": "dining_room",
+        "north": "gallery"
+      }
+    },
+    {
+      "id": "game_room",
+      "name": "Game Room",
+      "description": "Thunder makes the window panes of the room shake ever so slightly. In spite of outside's harsh atmosphere, however, the game room seems as a safe refuge.",
+      "items": [
+        {
+          "id": "pool_table",
+          "name": "Pool Table",
+          "description": "As tempted as you are for a game of billiards, you've got more important things to do.",
+          "description_in_start_room": "A pool table lies in the center of the room. The balls are all set for a game. The layers upon layers of dust tell you that nobody's played one in a while.",
+          "aliases": [
+            "pool table",
+            "billiards table",
+            "table"
+          ],
+          "type": []
+        },
+        {
+          "id": "pool_cue",
+          "name": "Pool Cue",
+          "description": "A pool cue. It's heavier than one would think. It's likely that this particular one was used by the previous owner to cheat at pool; there must be some kind of air pump inside.",
+          "description_in_start_room": "A stack of pool cues leaning against it supports the idea: all just as dusty. One, however, sticks out (no pun intended) -- you immediately notice it's a fair bit heavier than the others.",
+          "description_outside_start_room": "A pool cue lies on the floor.",
+          "aliases": [
+            "cue",
+            "stick",
+            "pool cue",
+            "pool stick"
+          ],
+          "type": [
+            "carryable",
+            "weapon",
+            "bat"
+          ],
+          "murder_method": "You get behind your victim and count to three. The stick feels heavier by the second. You've played ou the moment a thousand times. That's all this is going to come down to -- a moment. Three. There won't be any turning back. Two. Were you ever going to turn back, though? One. It's too late now, either way. Your arms are already swinging down. The head cracks. The soul leaves the body. That's all there is to it. All that ever could be."
+        }
+      ],
+      "exits": {
+        "west": "main_hall",
+        "east": "dance_floor"
+      }
+    },
+    {
+      "id": "dining_room",
+      "name": "Dining Room",
+      "description": "You can make out your own reflection in the large dining room table. Chairs for no less than eighteen surround it; yet, in spite of this being a dinner party, there's not a single plate prepared.",
+      "items": [
+        {
+          "id": "candlestick",
+          "name": "Candlestick",
+          "description": "Given that they're the only source of light in the room, you're hesitant to put the candles out.",
+          "description_in_start_room": "A pair of candlesticks are lined up on the table. Their flames flicker as you draw closer.",
+          "aliases": [
+            "candlestick",
+            "candle stick",
+            "candle",
+            "light"
+          ],
+          "type": []
+        }
+      ],
+      "exits": {
+        "east": "main_hall",
+        "south": "kitchen"
+      },
+      "secret_exits": {
+        "north": "library"
+      }
+    },
+    {
+      "id": "gallery",
+      "name": "Gallery",
+      "description": "It's like entering a time machine. Only the machine is busted, and time itself is spilling through the cracks of whatever lens you're having the pleasure of watching it fall apart. The room is a mish-mash of relics -- from paintings to rocks. It's questionable if the collector cared for them as objects, or even the prestige of owning them. It's questionable if the collector cared for anything, in fact.\n\nAll that said, an impressive collection is contained in all these glass cases.",
+      "items": [
+        {
+          "id": "antique_pistol",
+          "name": "Antique Pistol",
+          "description": "An antique pistol. Somehow, it feels light in your hand. Still has bullets in it, too.",
+          "description_in_start_room": "You peer into one of them. Antique weapons, it seems. There's a gun that seems to capture your attention in particular. Attention and... imagination, alike.",
+          "description_outside_start_room": "An antique pistol lies carelessly discarded.",
+          "aliases": [
+            "gun",
+            "pistol",
+            "antique gun",
+            "antique pistol",
+            "old gun",
+            "old pistol"
+          ],
+          "type": [
+            "carryable",
+            "weapon",
+            "pistol"
+          ],
+          "murder_method": "No warning. No hesitation. And it shouldn't be any other way. You press the muzzle of the gun against the temple and pull the trigger. An explosion. The body plops onto the ground. Your ears buzz. Smoke fills your nostrils. It's done."
+        }
+      ],
+      "exits": {
+        "south": "main_hall",
+        "west": "library",
+        "east": "servants_room"
+      }
+    },
+    {
+      "id": "lounge",
+      "name": "Lounge",
+      "description": "Easily the most comfortable room in the entire house. Three sofas surround the glass table in the center of the room. The floral pattern reminds you of your grandmother's old house. If your grandmother didn't have taste. Even so -- its bright colors soothe you.",
+      "items": [],
+      "exits": {
+        "west": "entrance",
+        "south": "bedroom",
+        "east": "study"
+      }
+    },
+    {
+      "id": "study",
+      "name": "Study",
+      "description": "Tick-tock. Tick-tock. There's a smell of old leather coming from somewhere in here. Perhaps it's all the books that line the walls?",
+      "items": [
+        {
+          "id": "clock",
+          "name": "Grandfather Clock",
+          "description": "The old clock's mechanism must be worth a fortune all on its own. The pendulum seems to be coated in gold...",
+          "description_in_start_room": "Tick-tock. The grandfather in the corner of the room ticks away, each one bouncing off the walls. It makes something in your stomach shake.",
+          "aliases": [
+            "clock",
+            "grandfather clock",
+            "old clock"
+          ],
+          "type": []
+        }
+      ],
+      "exits": {
+        "west": "lounge"
+      }
+    },
+    {
+      "id": "bedroom",
+      "name": "Bedroom",
+      "description": "They say a person's bedroom is supposed to be a sanctuary, yet you don't get the impression you're going to get reprimanded for walking around this one. Is it the people? Or simply the rules of this place -- unspoken by all except the walls?",
+      "items": [
+        {
+          "id": "helycion",
+          "name": "Helycion Bottle",
+          "description": "A bottle of dangerous poison known as Helycion. It's a derivative of cyanide, often confused for the more commonly-used Adaphium. While their chemical structure is extremely similar, the latter acts instantaneously.",
+          "description_in_start_room": "You look over the steel case next to the left of the bed. It contains a multitude of bottles. The labels contain names you can't recognize; with the exception of one: Helycion. It's a rather exotic poison, a derivative of cyanide. In autopsies, it's often confused for Adaphium. The difference between the two is subtle, but important: the latter acts instantaneously, while the other takes roughly 7 minutes to take effect...",
+          "description_outside_start_room": "A brown bottle of Helycion has been left just out of sight.",
+          "aliases": [
+            "helycion",
+            "bottle",
+            "poison",
+            "poison bottle",
+            "cyanide"
+          ],
+          "type": [
+            "carryable",
+            "weapon",
+            "cyanide"
+          ],
+          "murder_method": "It ends up being a quick procedure. The bottle came with a pipette, making it easy enough to let a drop or two fall onto your distracted victim's hand. If anyone saw the moment itself, you're done for. But if not, you have a few minutes left to get away and establish an alibi. Fingers crossed the police misidentify the poison. You rip the label off, just in the case you're captured with the poison. Could always claim someone planted it on you. As long as you have an alibi."
+        }
+      ],
+      "exits": {
+        "north": "lounge"
+      },
+      "secret_exits": {
+        "east": "servants_room"
+      }
+    },
+    {
+      "id": "kitchen",
+      "name": "Kitchen",
+      "description": "Rain taps violently against the windows of the kitchen. It's small, but undeniably new. Clean to the point of you doubting it's ever really been used.",
+      "items": [
+        {
+          "id": "fridge",
+          "name": "Fridge",
+          "description": "You peek into the fridge. The unbearable smell overtakes you. The food's been rotten for days, most likely.",
+          "description_in_start_room": "The sleek black fridge, for instance, looks new, but it's giving off strange humming.",
+          "aliases": [
+            "fridge",
+            "refrigerator"
+          ],
+          "type": []
+        },
+        {
+          "id": "cupboards",
+          "name": "Cupboards",
+          "description": "You look through the cupboards. Packages upon packages of cornflakes in one. In the other... Same thing. Huh. Okay then.",
+          "description_in_start_room": "Cupboards run beneath the L-shaped counter top.",
+          "aliases": [
+            "cupboards"
+          ],
+          "type": []
+        },
+        {
+          "id": "knife",
+          "name": "Kitchen Knife",
+          "description": "A sharp kitchen knife. Easy enough to hide on someone's person.",
+          "description_in_start_room": "A quick glance in one of the drawers reveals a set of kitchen knives. One probably wouldn't notice one missing.",
+          "description_outside_start_room": "A kitchen knife had been carelessly tossed on the floor.",
+          "aliases": [
+            "knife",
+            "kitchen knife"
+          ],
+          "type": [
+            "carryable",
+            "weapon",
+            "knife"
+          ],
+          "murder_method": "You grip the handle. Somewhere, past and future intertwine -- and right now, right in the middle -- you're lunging forward, your arms and knife already outstretched. If you took out each moment in time, you'd end up with Xeno's Paradox -- you're the arrow, and you're not supposed to ever reach your destination. But you will, you are -- and the knife has already pierced through the body. Blood squirts out uncontrollably, covering you. Shocked, you pull the blade out, and the victim falls helplessly to the ground."
+        }
+      ],
+      "exits": {
+        "north": "dining_room"
+      }
+    },
+    {
+      "id": "dance_floor",
+      "name": "Dance Floor",
+      "description": "It feels like you've taken a wrong door somewhere and slipped out of reality. From an old, antique mansion, you now find yourself in an 80s disco club. But there's no disco playing. Through the endless void of steam and smoke, jazz pulsates through the air. Definitely not the 80s. You stand perfectly still, yet the floor dances in constantly-shifting colors.",
+      "items": [
+        {
+          "id": "broken_record",
+          "name": "Broken Record",
+          "description": "An old record. 'Moths in the Darkness', says the label. No artist, though. Theoretically, could be used to stab someone. But it seems too unreliable of a weapon to make sense to use.",
+          "description_in_start_room": "You hear a crack beneath your feet. Looking down, there appears to be a broken record on the floor.",
+          "description_outside_start_room": "A broken record lies on the floor.",
+          "aliases": [
+            "record",
+            "broken record"
+          ],
+          "type": [
+            "carryable"
+          ]
+        }
+      ],
+      "exits": {
+        "west": "game_room"
+      }
+    },
+    {
+      "id": "library",
+      "name": "Library",
+      "description": "You almost trip. Books lie carelessly scattered around the floor. Torn pages, covered in intelligible scribbles; their meaning known only to the author.",
+      "items": [
+        {
+          "id": "south_bookcase",
+          "name": "South Bookcase",
+          "description": "Looking at the Don Quixote edition, you find yourself suddenly staring at the south bookcase. As you do, you notice that there's something interesting about the volumes of Shakespeare lined up on a portion of it. They're all almost alphabetically ordered. Almost. The Tempest has to be switched with King Lear. Your instincts tell you what will happen when you make the switch -- the bookcase will open, letting you pass through a secret passage...\n\nAll you need to do is go south to use it. But if anyone sees you -- either in the room you've left or the room you'll go into, you can play it off as a discovery... but its usability will fall significantly.",
+          "description_in_start_room": "The southern bookcase seems to be focused on older works, largely Renaissance and Marinism. There's a first edition of Don Quixote in particular that catches your eye...",
+          "aliases": [
+            "east bookcase"
+          ],
+          "type": []
+        },
+        {
+          "id": "west_bookcase",
+          "name": "West Bookcase",
+          "description": "You're admittedly not in a reading mood. A short story collection of Borges catches your eye. But given that he mostly satirized the genre, you probably won't find a whole lot of murder advice in it.",
+          "description_in_start_room": "The bookcase to the east seems to be for more recent works. Well, 'modern' works, to be more precise. Given the authors, whoever assembled this collection was undoubtedly a fan of Marquez. An old collage body of yours would definitely want to see this.",
+          "aliases": [
+            "west bookcase"
+          ],
+          "type": []
+        }
+      ],
+      "exits": {
+        "east": "gallery",
+        "north": "planetarium"
+      },
+      "secret_exits": {
+        "south": "dining_room"
+      }
+    },
+    {
+      "id": "servants_room",
+      "name": "Servants' Room",
+      "description": "No sooner do you inhale than you find yourself caught in a coughing fit. The room is covered in dust and cobwebs. It seems staff hasn't been a part of this place in a long time. You seem to remember reading a story about how one of the past owners had gone mad and taken his madness out on the servants. That's where the stories of this place being cursed come from.",
+      "items": [
+        {
+          "id": "key",
+          "name": "Master Key",
+          "description": "An old master key. You can lock doors with it by using the 'lock' command. Locked doors can be unlocked with the 'unlock' command.",
+          "description_in_start_room": "Waving away the cobwebs, you spot a rack of keys -- with only a single key still hanging on it. Given the tag on the key, it may be the most valuable one: the master key! You could use this to 'lock' doors.",
+          "description_outside_start_room": "The mansion master key lies unused.",
+          "aliases": [
+            "key",
+            "master key"
+          ],
+          "type": [
+            "carryable",
+            "key"
+          ]
+        }
+      ],
+      "exits": {
+        "west": "gallery"
+      },
+      "secret_exits": {
+        "east": "bedroom"
+      }
+    },
+    {
+      "id": "planetarium",
+      "name": "Planetarium",
+      "description": "'Look up to the stars, little man, and tremble at the thought of your own size.' As you look up to the star-covered ceiling, you realize some of them are currently dead; the light you're seeing being sent out decades ago. Hah. You blink, scratching the back of the head. The room itself is filled with seats, all slightly tilted up.",
+      "items": [
+        {
+          "id": "control_table",
+          "name": "Control Table",
+          "description": "You can't make heads or tails of the controls.",
+          "description_in_start_room": "At the end of the long line of seats is a table -- likely the one controlling the images covering the ceiling.",
+          "aliases": [
+            "table",
+            "control table"
+          ],
+          "type": []
+        },
+        {
+          "id": "gloves",
+          "name": "Rubber Gloves",
+          "description": "A pair of rubber gloves. With all the sorts of people around here, nobody would pay any attention to you having them on.",
+          "description_in_start_room": "You approach it, leaving the controls be for the time being, and look through the drawers. There's a packet of rubber gloves tucked away behind all the papers.",
+          "description_outside_start_room": "A pair of gloves have been tossed away, crumpled into a crack in the wall.",
+          "aliases": [
+            "gloves",
+            "glove",
+            "rubber gloves",
+            "glove packet",
+            "rubber glove packet"
+          ],
+          "type": [
+            "carryable",
+            "gloves"
+          ]
+        }
+      ],
+      "exits": {
+        "south": "library"
+      }
+    }
+  ],
+  "start_items": [
+    {
+      "id": "clothes",
+      "name": "Clothes",
+      "type": [
+        "undroppable",
+        "clothing"
+      ]
+    }
+  ]
+}
