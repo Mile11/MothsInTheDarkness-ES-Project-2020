@@ -12,6 +12,7 @@ from termcolor import colored
 from Levenshtein import distance
 
 MOVE_CHECK_MIN_DIST = 1
+LOC_CHECK_MIN_DIST = 2
 ITEM_CHECK_MIN_DIST = 2
 CHARACTER_CHECK_MIN_DIST = 2
 
@@ -35,14 +36,21 @@ def move_actor(prolog, T, arg_given, loc, assets, output=True, actor="player"):
         print("Go where?")
         return False
 
-    direction = arg_given[0]
+    if arg_given[0] == "to":
+        arg_given = arg_given[1:]
+
+    if len(arg_given) > 1:
+        direction = " ".join(arg_given)
+    else:
+        direction = arg_given[0]
     valid_loc_found = False
 
     secret_aware_before = set([p["X"] for p in list(prolog.query(f"knows_secret_passage(X, {loc}, Y), present(X, {loc}, {T})"))])
     for dirs in prolog.query(f"allow_move({actor}, {loc}, X, Y)"):
-        if distance(dirs["Y"], direction) <= MOVE_CHECK_MIN_DIST:
+        if distance(dirs["Y"], direction) <= MOVE_CHECK_MIN_DIST or (assets and ((distance(assets.rooms[dirs["X"]].room_info["name"].lower(), direction)) <= LOC_CHECK_MIN_DIST)):
             valid_loc_found = True
             next_room = dirs["X"]
+            direction = dirs["Y"]
 
     if not valid_loc_found:
         if output:
@@ -106,6 +114,19 @@ def wait(prolog, T, arg_given, loc, assets, output=True, actor="player"):
     :return: Boolean signifying success or failure.
     """
 
+    if arg_given:
+        t = arg_given[0]
+        try:
+            k = int(t)
+            for a in range(k):
+                prolog.assertz(f"present({actor}, {loc}, {T+a+1})")
+            print(f"Time passes... You wait for {k} minutes.")
+            return True
+        except:
+            if output:
+                print("Please enter the number of minutes you want to wait for.")
+                return False
+
     if output:
         print("Time passes...")
     prolog.assertz(f"present({actor}, {loc}, {T + 1})")
@@ -125,7 +146,7 @@ def get_time(prolog, T, arg_given, player_loc, assets, output=True):
     :return: Always returns False (doesn't advance time).
     """
 
-    print(f"You check your watch. The time is {time_convert(T)}.")
+    print(f"You check your watch. The time is {time_convert(T)}. Your deadline is at 22:30.")
     return False
 
 

@@ -257,6 +257,7 @@ class InvestigationGame:
             opening.extend(self.assets.setup["final_remarks"])
             for o in opening:
                 print(o)
+                print()
                 print(colored("Press Enter to continue...", "magenta"))
                 input("")
                 print()
@@ -408,30 +409,32 @@ class InvestigationGame:
         :return: True only if a valid command that advances time was given.
         """
 
-        # Command prompot for the player to use.
-        comm = input("> ")
-        comm = comm.strip().lower()
+        if len(list(prolog.query(f"not(present(player, _, {T+1}))"))):
+            # Command prompot for the player to use.
+            comm = input("> ")
+            comm = comm.strip().lower()
 
-        if not comm:
-            return False
+            if not comm:
+                return False
 
-        print()
+            print()
 
-        # Extract the command and its arguments.
-        command_split = comm.split(" ")
-        command_to_use = command_split[0]
+            # Extract the command and its arguments.
+            command_split = comm.split(" ")
+            command_to_use = command_split[0]
 
-        if command_to_use not in command_list:
-            print("I'm afraid I don't understand.")
-            return False
+            if command_to_use not in command_list:
+                print("I'm afraid I don't understand.")
+                return False
 
-        if len(command_split) == 1:
-            rest_of_command = None
-        else:
-            rest_of_command = command_split[1:]
+            if len(command_split) == 1:
+                rest_of_command = None
+            else:
+                rest_of_command = command_split[1:]
 
-        # Hand the command over for processing to the appropriate function.
-        return command_list[command_to_use](prolog, T, rest_of_command, loc, self.assets)
+            # Hand the command over for processing to the appropriate function.
+            return command_list[command_to_use](prolog, T, rest_of_command, loc, self.assets)
+        return True
 
     def cast_move(self, prolog, T):
         """

@@ -22,8 +22,8 @@ Installation steps:
 
 * Install Python: Python (3.6+)
 * Install [SWI-Prolog](https://www.swi-prolog.org/)
-* Install Python modules: [pyswip](https://pypi.org/project/pyswip/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/),
-either through individual `pip` commands, or by using the provided `requirements.txt`
+    * If on Windows, make sure the 32-bit/64-bit choice matches the version of Python you're using. For more information in this regard, take a look at the installation notes on the [pyswip page](https://github.com/yuce/pyswip/blob/master/INSTALL.md).
+* Install the Python modules in the `requirements.txt`.
 
 After cloning this repository, you can run the game with:
 
