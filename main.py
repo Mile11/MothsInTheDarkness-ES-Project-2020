@@ -1,6 +1,10 @@
+import colorama
+
 from pyswip import Prolog
 
 from interactive_game import InvestigationGame
+
+colorama.init()
 
 if __name__ == '__main__':
 

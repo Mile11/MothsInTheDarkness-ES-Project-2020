@@ -466,7 +466,7 @@ def kill(prolog, T, arg_given, player_loc, assets):
         weapons = [w["X"] for w in list(prolog.query(f"inventory(player, X), item_type(X, weapon)"))]
         if len(weapons) == 0:
             print("As good as the opportunity might be, you don't seem to have anything to do the job...")
-            print(colored("(You'll have to find a weapon...)", "grey"))
+            print(colored("(You'll have to find a weapon...)", "magenta"))
             return False
 
         print("It looks like the time has come.")
@@ -523,7 +523,7 @@ def lock(prolog, T, arg_given, player_loc, assets):
 
     if len(list(prolog.query("inventory(player, key)"))) > 0:
         if not arg_given:
-            print(colored("Enter the direction of the door you wish to lock.", "grey"))
+            print("Enter the direction of the door you wish to lock.")
             return False
 
         direction = arg_given[0]
@@ -563,7 +563,7 @@ def unlock(prolog, T, arg_given, player_loc, assets):
 
     if len(list(prolog.query("inventory(player, key)"))) > 0:
         if not arg_given:
-            print(colored("Enter the direction of the door you wish to unlock.", "grey"))
+            print("Enter the direction of the door you wish to unlock.")
             return False
 
         direction = arg_given[0]
@@ -618,6 +618,16 @@ def report(prolog, T, arg_given, player_loc, assets):
 
 
 def help(prolog, T, arg_given, player_loc, assets):
+    """
+    Prints out the help for playing the game.
+
+    :param prolog: An instantiated version of the SWI-Prolog Python interface.
+    :param T: Current time in-game.
+    :param arg_given: The argument given to the command.
+    :param player_loc: The actor's current location.
+    :param assets: The game assets.
+    :return: Boolean signifying success or failure.
+    """
 
     print("Here is a list of acceptable commands:")
     comm_list = list(command_list.keys())

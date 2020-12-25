@@ -257,8 +257,8 @@ class InvestigationGame:
             opening.extend(self.assets.setup["final_remarks"])
             for o in opening:
                 print(o)
-                print()
-                input(colored("Press Enter to continue...", "grey"))
+                print(colored("Press Enter to continue...", "magenta"))
+                input("")
                 print()
         else:
             print("You arrive at the mansion, murderous thoughts swirling in your head.")
@@ -270,9 +270,10 @@ class InvestigationGame:
             print("You check your watch. The time is 8 PM. That gives you just two and a half hours to pull the murder off.")
             print()
 
-        print(colored(instructions[0], "grey"))
+        print(colored(instructions[0], "magenta"))
         print()
-        input(colored("Press Enter to Start.", "grey"))
+        print(colored("Press Enter to Start.", "magenta"))
+        input()
 
         print("\n")
 
