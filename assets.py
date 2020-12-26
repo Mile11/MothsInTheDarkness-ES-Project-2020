@@ -56,7 +56,7 @@ class Room:
 
         # Print the items in the room.
         item_str = ""
-        for item in prolog.query(f"item_in_room({id}, X)"):
+        for item in prolog.query(f"item_in_room({id}, X), item(X)"):
             desc_to_use = "description_in_start_room"
             if not all_assets.items[item["X"]].item_info[desc_to_use]:
                 desc_to_use = "description_outside_start_room"
@@ -67,7 +67,7 @@ class Room:
             print()
 
         # Print the information on the other people in the room.
-        people = list(prolog.query(f"present(X, {id}, {T})"))
+        people = list(prolog.query(f"present(X, {id}, {T}), not(inventory(_, X))"))
         people.remove({"X": "player"})
         if len(people) > 0:
             if len(people) == 1:

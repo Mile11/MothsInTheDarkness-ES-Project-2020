@@ -137,3 +137,16 @@ def submit_distances(prolog, assets, alibis):
 
                 prolog.assertz(f"manhattan({alibi[0]}, {place_of_crime}, {dist})")
                 prolog.assertz(f"manhattan_secret({alibi[0]}, {place_of_crime}, {dist_secret})")
+
+        if alibis[a]["before"] and alibis[a]["after"]:
+            alibi_place_before = alibis[a]["before"][0]
+            alibi_place_after = alibis[a]["after"][0]
+
+            min_graph = bellman_ford(graph, alibi_place_before)
+            min_graph_with_secret = bellman_ford(graph_with_secrets, alibi_place_before)
+
+            dist = get_distance(min_graph, alibi_place_before, alibi_place_after)
+            dist_secret = get_distance(min_graph_with_secret, alibi_place_before, alibi_place_after)
+
+            prolog.assertz(f"manhattan({alibi_place_before}, {alibi_place_after}, {dist})")
+            prolog.assertz(f"manhattan_secret({alibi_place_before}, {alibi_place_after}, {dist_secret})")

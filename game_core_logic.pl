@@ -26,7 +26,7 @@
 % Before outlining the knowledge database, we need       %
 % to write out all of the cluases as dynamic for         %
 % the closed world assumption to work out smoothly.      %
-% IE, if a rule reliess on facts or clausess that        %
+% IE, if a rule reliess on facts that                    %
 % haven't been set yet, Prolog would raise an error.     %
 % And we want to use some of these facts as flags,       %
 % so them not not being defined at time of checking      %
@@ -41,6 +41,7 @@
 :- dynamic cause_correlated/2.
 :- dynamic cause_of_death/1.
 :- dynamic culprit/1.
+:- dynamic current_time/1.
 :- dynamic damning_action/3.
 :- dynamic dead/1.
 :- dynamic deadline/1.
@@ -50,6 +51,7 @@
 :- dynamic enterer/5.
 :- dynamic fingerprints/2.
 :- dynamic follower/5.
+:- dynamic impossible_alibi/1.
 :- dynamic inventory/2.
 :- dynamic incriminating/1.
 :- dynamic item/1.
@@ -104,7 +106,9 @@
 culprit(X) :- person(X), opportunity(X), means(X).
 
 % Alternatively, a person is immediately caught if there exists a witness to their crime.
-culprit(X) :- person(X), person(Y), witness(Y, _), not(X = Y).
+% But since we directly only check witness(X, T) in the code, there's no need to
+% include it in the ruleset here.
+% culprit(X) :- person(X), person(Y), time(T), witness(Y, T), not(X = Y).
 
 % Someone has opportunity if, at the time of the crime, AND if they can reasonably reach
 % the place of murder.
@@ -134,6 +138,11 @@ place_possibility(X) :-
                         place_of_crime(P),
                         not(alibi(_, P, T)).
 
+% We should also keep in mind of flat-out impossible movements to begin with.
+% If it's impossible for a person to be in a place before and after the crime, it's
+% automatically suspicious and implies the existence of secret passages.
+place_possibility(X) :- impossible_alibi(X).
+
 % We must always keep track of a person's last known alibi.
 % Knowing the time of crime and the location of the crime and the last known alibi,
 % we can determine if it's feasable for the culprit to have made it to the murder
@@ -149,6 +158,12 @@ place_distances(X, L) :-
                             place_of_crime(Q),
                             time_of_crime(K),
                             reachable(P, Q, T, K).
+
+% An alibi is considered impossible if it's simply not reachable in the allocated amount of time.
+impossible_alibi(X) :-
+                        last_known_alibi(before, X, P, T),
+                        last_known_alibi(after, X, Q, K),
+                        not(reachable(P, Q, T, K)).
 
 % Determining if the location is reachable comes down to:
 reachable(P, Q, T, K) :- room(P), room(Q), distance(P, Q, D), D =< abs(T - K).
@@ -203,6 +218,25 @@ witness(X, T) :-
                 alibi(Y, P, T),
                 damning_action(Y, P, T).
 
+% Obviously, people who pass by someone on their way to a room would also count as witnesses
+% if they catch a damning action. This applies to damning actions that have an active effect
+% rather than being a one-time event.
+witness(X, T) :-
+                    V is T-1,
+                    person(X),
+                    person(Y),
+                    room(P),
+                    room(D),
+                    time(T),
+                    time(V),
+                    present(X, D, V),
+                    present(X, P, T),
+                    present(Y, P, V),
+                    present(Y, D, T),
+                    not(D = P),
+                    not(X = Y),
+                    damning_action(Y, D, V).
+
 % A damning action is carrying something extremely visible and extremely incriminating.
 damning_action(X, P, T) :-
                         person(X),
@@ -225,22 +259,18 @@ damning_action(X, P, T) :-
                         (time_of_act(T); K is T-1, time_of_act(K)).
 
 % A dead person can be considered in a room when carried through rooms.
-% The issue with this rule is that it significantly slows down the game execution time. Therefore,
-% carrying a body is currently disabled.
-%present(X, P, T) :-
-%                person(X),
-%                dead(X),
-%                person(Y),
-%                not(dead(Y)),
-%                room(P),
-%                time(T),
-%                time(K),
-%                present(Y, P, T),
-%                inventory(Y, X),
-%                picked_up(Y, X, K),
-%                not(dropped(Y, X, K)),
-%                not(X = Y),
-%                T >= K.
+present(X, P, T) :-
+                person(X),
+                dead(X),
+                person(Y),
+                not(dead(Y)),
+                room(P),
+                time(T),
+                present(Y, P, T),
+                picked_up(Y, X, K),
+                not(dropped(Y, X, K)),
+                not(X = Y),
+                T >= K.
 
 % Determining means comes down to finding some kind of conclusive piece of evidence
 % against the culprit.
@@ -418,8 +448,8 @@ follower(X, D, P, T, K) :-
 
 % Part of the disabled feature to carry a body.
 % A person becomes carryable once it's dead.
-% item_type(X, carryable) :- person(X), dead(X).
-% item_type(X, incriminating) :- person(X), dead(X).
+item_type(X, carryable) :- person(X), dead(X).
+item_type(X, incriminating) :- person(X), dead(X).
 
 % When the player usess a knife, if they don't happen to have an object to cover
 % the bloodstain with, they will be noticeably incriminating themselves, as
@@ -436,14 +466,14 @@ item_type(X, bloodied) :-
 item_type(X, incriminating) :- item_type(X, bloodied).
 
 % Something is in an inventory when picked up and never dropped.
-inventory(X, Y) :- time(T), picked_up(X, Y, T), not(dropped(X, Y, T)).
+inventory(X, Y) :- picked_up(X, Y, T), not(dropped(X, Y, T)).
 
 % The amount of delay from the moment of the act to the actual death.
 death_delay(8) :- cause_of_death(poison).
 
 death_delay(0) :- not(cause_of_death(poison)).
 
-% Types of objects and their related causes of death:
+% Some facts regarding objects and their related causes of death:
 cause_correlated(stabwound, knife).
 cause_correlated(gunshot, pistol).
 cause_correlated(poison, cyanide).

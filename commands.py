@@ -51,7 +51,7 @@ def move_actor(prolog, T, arg_given, loc, assets, output=True, actor="player"):
         direction = arg_given[0]
     valid_loc_found = False
 
-    secret_aware_before = set([p["X"] for p in list(prolog.query(f"knows_secret_passage(X, {loc}, Y), present(X, {loc}, {T})"))])
+    secret_aware_before = set([p["X"] for p in list(prolog.query(f"knows_secret_passage(X, {loc}, Y), present(X, {loc}, {T}), not(dead(X))"))])
     for dirs in prolog.query(f"allow_move({actor}, {loc}, X, Y)"):
         if distance(dirs["Y"], direction) <= MOVE_CHECK_MIN_DIST or (assets and ((distance(assets.rooms[dirs["X"]].room_info["name"].lower(), direction)) <= LOC_CHECK_MIN_DIST)):
             valid_loc_found = True
@@ -69,7 +69,7 @@ def move_actor(prolog, T, arg_given, loc, assets, output=True, actor="player"):
     prolog.assertz(f"present({actor}, {next_room}, {T+1})")
 
     if len(list(prolog.query(f"secret_passage({loc}, {next_room}, {direction})"))) > 0:
-        secret_aware_after = set([p["X"] for p in list(prolog.query(f"knows_secret_passage(X, {loc}, Y), present(X, {loc}, {T})"))])
+        secret_aware_after = set([p["X"] for p in list(prolog.query(f"knows_secret_passage(X, {loc}, Y), present(X, {loc}, {T}), not(dead(X))"))])
         secret_aware_diff = secret_aware_after - secret_aware_before
 
         if not secret_aware_diff:
@@ -275,11 +275,7 @@ def take(prolog, T, arg_given, loc, assets, output=True, actor="player"):
 
     arg_item = " ".join(arg_given)
 
-    takeable_objects = list(prolog.query(f"item_in_room({loc}, X), item_type(X, carryable)"))
-    if len(takeable_objects) == 0:
-        if output:
-            print("There's nothing here to take.")
-        return False
+    takeable_objects = list(prolog.query(f"item_in_room({loc}, X), item_type(X, carryable), item(X)"))
 
     for item in takeable_objects:
         item_to_check = assets.items[item["X"]]
@@ -303,6 +299,24 @@ def take(prolog, T, arg_given, loc, assets, output=True, actor="player"):
                 if output:
                     print(f"You take the {item_to_check.item_info['name'].lower()}.")
                 return wait(prolog, T, None, loc, None, output=False, actor=actor)
+
+    # Alternatively, they may be attempting to pick up a dead person.
+    takeable_people = list(prolog.query(f"present(X, {loc}, {T}), item_type(X, carryable), not(inventory({actor}, X))"))
+    if len(takeable_people) == 0:
+        if output:
+            print("You can't pick that up.")
+        return False
+
+    for item in takeable_people:
+        item_to_check = assets.characters[item["X"]]
+        if distance(item_to_check.character_info["name"].lower(), arg_item) <= ITEM_CHECK_MIN_DIST:
+
+            # Pick up and remove item from the room.
+            prolog.assertz(f"picked_up({actor}, {item['X']}, {T})")
+
+            if output:
+                print(f"You take {item_to_check.character_info['name']}'s body.")
+            return wait(prolog, T, None, loc, None, output=False, actor=actor)
 
     # If we go through the entire loop, conclude the item is simply not in the room!
     if output:
@@ -330,11 +344,7 @@ def drop(prolog, T, arg_given, loc, assets, output=True, actor="player"):
         return False
 
     arg_item = " ".join(arg_given)
-    inventory_items = list(prolog.query(f"inventory({actor}, X), not(item_type(X, undroppable))"))
-    if len(inventory_items) == 0:
-        if output:
-            print("You don't have anything to drop.")
-        return False
+    inventory_items = list(prolog.query(f"inventory({actor}, X), not(item_type(X, undroppable)), item(X)"))
 
     for item in inventory_items:
         item_to_check = assets.items[item['X']]
@@ -355,6 +365,29 @@ def drop(prolog, T, arg_given, loc, assets, output=True, actor="player"):
                 if output:
                     print(f"You drop the {item_to_check.item_info['name'].lower()}.")
                 return wait(prolog, T, None, loc, None, output=False, actor=actor)
+
+    # Check for people that can be dropped.
+    people_in_inventory = list(prolog.query(f"inventory({actor}, X), not(item_type(X, undroppable)), person(X)"))
+    if len(people_in_inventory) == 0:
+        if output:
+            print("You can't drop what you don't have.")
+        return False
+
+    for item in people_in_inventory:
+        item_to_check = assets.characters[item["X"]]
+        if distance(item_to_check.character_info["name"].lower(), arg_item) <= ITEM_CHECK_MIN_DIST:
+
+            # Remove person from inventory.
+            relevant_timestamp = list(prolog.query(
+                f"picked_up({actor}, {item['X']}, T), not(dropped({actor}, {item['X']}, T))")
+            )[0]["T"]
+
+            prolog.assertz(f"dropped({actor}, {item['X']}, {relevant_timestamp})")
+            prolog.assertz(f"present({item['X']}, {loc}, {T})")
+
+            if output:
+                print(f"You drop {item_to_check.character_info['name']}'s body.")
+            return wait(prolog, T, None, loc, None, output=False, actor=actor)
 
     # If we go through the entire loop, conclude the item is simply not in the inventory!
     if output:
@@ -545,7 +578,7 @@ def kill(prolog, T, arg_given, player_loc, assets):
 
         return wait(prolog, T, None, player_loc, None, output=False, actor="player")
     else:
-        print("Your victim is not in the room!")
+        print("Your victim is not in the room.\n...Or already dead.")
         return False
 
 

@@ -157,6 +157,7 @@ class InvestigationGame:
         prev_loc = ""
         curr_loc = ""
         prolog.assertz(f"time({T})")
+        prolog.assertz(f"current_time({T})")
 
         # The main loop continues until the police are called -- IE, until the body is found.
         while not len(list(prolog.query("police(called)"))):
@@ -174,9 +175,11 @@ class InvestigationGame:
             # Have the other characters move.
             self.cast_move(prolog, T)
 
+            prolog.retract(f"current_time({T})")
             T += 1
             prev_loc = curr_loc
             prolog.assertz(f"time({T})")
+            prolog.assertz(f"current_time({T})")
 
         # There is an instance where it's important to say who entered the room
         # at the very move the body is found on and check if the player got caught
@@ -297,7 +300,7 @@ class InvestigationGame:
             self.get_changers(prolog, T, curr_loc, "follower", {
                 ("before direction", True): " comes ",
                 ("before direction", False): " come ",
-                "after direction": " with you to the ",
+                "after direction": " with you from the ",
                 "after room name": "",
             }, "yellow")
 
@@ -579,6 +582,17 @@ class InvestigationGame:
                 t_conv = time_convert(t)
                 chars = [self.assets.characters[c].character_info["name"] for c in alibi_coll[a]]
                 print(room_name, t_conv, chars, "[", colored(reachability[h][reachb][0], reachability[h][reachb][1]), "]")
+            print()
+
+        # Check if there are people with impossible alibis.
+        impossible_alibis = set([p["X"] for p in list(prolog.query("impossible_alibi(X)"))])
+        if impossible_alibis:
+            print("The police notice something.")
+            print("Given where they were before it happened, there is one or more people who could not have ended up where they ended up after the crime.")
+            print("The police conclude secret passages must be in play. While they search for it, they remember the people whose positions are now suspicious.")
+            impossible_named = [self.assets.characters[c].character_info["name"] for c in impossible_alibis]
+            print(impossible_named)
+            print("If course, this doesn't mean they're the culprit. As long as they have an alibi for the actual time of the murder...")
             print()
 
         print("Based on the time and the locations, we can conclude that the ones with the opportunity are:")
