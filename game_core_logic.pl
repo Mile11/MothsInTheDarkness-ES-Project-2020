@@ -446,9 +446,10 @@ follower(X, D, P, T, K) :-
                     not(X = player),
                     (room_conn(P, D, K); secret_passage(P, D, K)).
 
-% Part of the disabled feature to carry a body.
 % A person becomes carryable once it's dead.
 item_type(X, carryable) :- person(X), dead(X).
+
+% Carrying a dead body is incriminating.
 item_type(X, incriminating) :- person(X), dead(X).
 
 % When the player usess a knife, if they don't happen to have an object to cover
