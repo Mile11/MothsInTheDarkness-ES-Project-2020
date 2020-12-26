@@ -33,11 +33,17 @@ def move_actor(prolog, T, arg_given, loc, assets, output=True, actor="player"):
     """
 
     if not arg_given:
-        print("Go where?")
+        if output:
+            print("Go where?")
         return False
 
     if arg_given[0] == "to":
         arg_given = arg_given[1:]
+
+    if not arg_given:
+        if output:
+            print("Go where?")
+        return False
 
     if len(arg_given) > 1:
         direction = " ".join(arg_given)
@@ -200,6 +206,7 @@ def examine(prolog, T, arg_given, player_loc, assets):
     if not arg_given:
         assets.rooms[player_loc].show_description(prolog, assets, T)
         return False
+
     if arg_given[0] == "at":
         arg_given = arg_given[1:]
 
@@ -260,7 +267,14 @@ def take(prolog, T, arg_given, loc, assets, output=True, actor="player"):
 
     if arg_given[0] == "up":
         arg_given = arg_given[1:]
+
+    if not arg_given:
+        if output:
+            print("Take what?")
+        return False
+
     arg_item = " ".join(arg_given)
+
     takeable_objects = list(prolog.query(f"item_in_room({loc}, X), item_type(X, carryable)"))
     if len(takeable_objects) == 0:
         if output:
@@ -430,6 +444,10 @@ def talk(prolog, T, arg_given, player_loc, assets):
     if arg_given[0] == "to":
         arg_given = arg_given[1:]
 
+    if not arg_given:
+        print("Talk to who?")
+        return False
+
     all_people = assets.characters
     name = " ".join(arg_given)
 
@@ -466,7 +484,8 @@ def talk(prolog, T, arg_given, player_loc, assets):
             print(val)
             return wait(prolog, T, None, player_loc, None, output=False, actor="player")
 
-    pass
+    print("There is no such person here.")
+    return False
 
 
 def kill(prolog, T, arg_given, player_loc, assets):

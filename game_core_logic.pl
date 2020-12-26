@@ -43,6 +43,7 @@
 :- dynamic culprit/1.
 :- dynamic damning_action/3.
 :- dynamic dead/1.
+:- dynamic deadline/1.
 :- dynamic death_delay/1.
 :- dynamic distance/3.
 :- dynamic dropped/3.  % Used for determining if the object is still in a person's posession.
